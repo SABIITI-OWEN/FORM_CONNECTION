@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St Mary's Hospital Patient Medical Form</title>
+  <style>
+    /* Page Background and Centering */
+    body {
+      background-color: #87CEEB; /* Sky blue background */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Heading */
+    .form-heading {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Large Text Area for Doctor's Comments */
+    .large-textarea {
+      height: 120px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    // Basic Validation for Required Fields
+    function validateForm() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const contact = document.getElementById("contact").value;
+
+      if (!name || !age || !contact) {
+        alert("Please fill out all required fields (Name, Age, and Contact).");
+        return false;
+      }
+
+      // Check if contact number is exactly 10 digits
+      if (!/^\d{10}$/.test(contact)) {
+        alert("Contact number should be exactly 10 digits.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <!-- Form Heading -->
+    <div class="form-heading">St Mary's Hospital Patient Medical Form</div>
+
+ <!-- Patient Medical Form -->
+ <form action="connect.php" method="POST" onsubmit="return validateForm()">
+
+    <!-- Patient Medical Form -->
+    <form onsubmit="return validateForm()">
+      <!-- Patient Name -->
+      <div class="form-group">
+        <label for="name">Patient Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="0" required>
+      </div>
+
+      <!-- Weight -->
+      <div class="form-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" min="0">
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+      </div>
+
+      <!-- Contact -->
+      <div class="form-group">
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" required>
+      </div>
+
+      <!-- Email Address -->
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+      <!-- Medical History -->
+      <div class="form-group">
+        <label for="history">Medical History:</label>
+        <input type="text" id="history" name="history">
+      </div>
+
+      <!-- Scan Results -->
+      <div class="form-group">
+        <label for="scan-results">Scan Results:</label>
+        <input type="text" id="scan-results" name="scan_results">
+      </div>
+
+      <!-- Doctor's Comment -->
+      <div class="form-group">
+        <label for="comment">Doctor's Comment:</label>
+        <textarea id="comment" name="comment" class="large-textarea"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
